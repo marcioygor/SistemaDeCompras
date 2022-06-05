@@ -30,10 +30,13 @@ namespace SistemaDeCompras
             services.AddDbContext<Context>(options => options.UseSqlServer(mySqlConnection));
 
             //fazendo a injenção de dependência onde é solicitado uma instância 
-             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
-             services.AddTransient<IProdutoRepository, ProdutoRepository>();
+            services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+            services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddControllersWithViews();
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +53,8 @@ namespace SistemaDeCompras
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 

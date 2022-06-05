@@ -10,6 +10,7 @@ namespace SistemaDeCompras.Data
 
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite("DataSource=app.db; Cache=Shared");
     }
 }

@@ -16,7 +16,7 @@ namespace SistemaDeCompras.Repositories
            _context=context;
         }
 
-        public IEnumerable<Produto> Produtos=>_context.Produtos.Include(c=>c.Categoria);
+        public IEnumerable<Produto> Produtos=>_context.Produtos.Include(c=>c.Categoria); //incluindo a tabela categoria
 
         public Produto GetProdutoById(int ProdutoId){
           return _context.Produtos.FirstOrDefault(x=> x.ProdutoId==ProdutoId);

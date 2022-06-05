@@ -1,14 +1,16 @@
-@model IEnumerable<SistemaDeCompras.Models.Produto>
-
+@model ProdutoListViewModel; // referenciado no arquivo _ViewImports
 <div>
-    <h2>Todos os produtos</h2>
+    <h2>@ViewData["Titulo"]</h2>
 </div>
-
-@foreach (var produto in Model)
-{
-    <div>
-        <h4>@produto.Nome</h4>
-        <p><img src="@produto.ImagemUrl"></p>
-        <h3>Preço : @produto.Preco.ToString("c")</h3>
+<h2>@ViewData["Data"]</h2>
+<hr />
+<h3>@ViewBag.Total @ViewBag.TotalProdutos</h3>
+<hr />
+<div class="container">
+    <div class="row">
+        @foreach (var produto in Model.Produtos)
+        {
+            <partial name="_ProdutosResumo" for="@produto" />
+        }
     </div>
-}
+</div>
