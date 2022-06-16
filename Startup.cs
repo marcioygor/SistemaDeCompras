@@ -11,6 +11,7 @@ using SistemaDeCompras.Data;
 using Microsoft.EntityFrameworkCore;
 using SistemaDeCompras.Repositories;
 using SistemaDeCompras.Repositories.Interfaces;
+using SistemaDeCompras.Models;
 
 namespace SistemaDeCompras
 {
@@ -34,6 +35,10 @@ namespace SistemaDeCompras
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //obtendo um carrinho de compra
+            services.AddScoped(sp=>CarrinhoCompra.GetCarrinho(sp));
+
             services.AddControllersWithViews();
             services.AddMemoryCache();
             services.AddSession();

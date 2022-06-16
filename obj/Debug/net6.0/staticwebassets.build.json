@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WoSzkRdcMvXmdi8AmDrZBHHOo0gr4rAy/vcklm/k+mw=",
+  "Hash": "9WLV0NPLEGXnlB/OYCzG0hSxrZ4UM34ga+xrhkXj0bE=",
   "Source": "SistemaDeCompras",
   "BasePath": "_content/SistemaDeCompras",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Img\\carousel11.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Marcio Ygor\\Documents\\Aulas_Web\\Asp-Net\\SistemaDeCompras\\wwwroot\\Img\\Full-Cart-icon.png",
+      "SourceId": "SistemaDeCompras",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Marcio Ygor\\Documents\\Aulas_Web\\Asp-Net\\SistemaDeCompras\\wwwroot\\",
+      "BasePath": "_content/SistemaDeCompras",
+      "RelativePath": "Img/Full-Cart-icon.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Img\\Full-Cart-icon.png"
     },
     {
       "Identity": "C:\\Users\\Marcio Ygor\\Documents\\Aulas_Web\\Asp-Net\\SistemaDeCompras\\wwwroot\\Img\\Geladeira.png",

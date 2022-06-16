@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Marcio Ygor\Documents\Aulas_Web\Asp-Net\SistemaDeCompras
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Marcio Ygor/Documents/Aulas_Web/Asp-Net/SistemaDeCompras/Views/CarrinhoCompra/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FycmluaG9Db21wcmFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Marcio Ygor/Documents/Aulas_Web/Asp-Net/SistemaDeCompras/Views/Home/Demo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZW1vLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
