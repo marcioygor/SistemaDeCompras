@@ -16,21 +16,39 @@ public class ProdutoController : Controller
            _produtoRepository=produtoRepository;
         }
 
-   public IActionResult List()
+   public IActionResult List(string categoria) //List?categoria=
     {
-        ViewData["Titulo"]="Categoria Atual";
-        ViewData["Data"]= DateTime.Now;
+            IEnumerable<Produto> produtos;
+            string categoriaAtual = string.Empty;
 
-        //var produtos= _produtoRepository.Produtos.ToList();
-        var produtoListViewModel=new ProdutoListViewModel();
-        produtoListViewModel.Produtos=_produtoRepository.Produtos.ToList();
-        produtoListViewModel.CategoriaAtual="Categoria Atual";
+            if(string.IsNullOrEmpty(categoria))
+            {
+                produtos = _produtoRepository.Produtos.OrderBy(l => l.ProdutoId);
+                categoriaAtual = "Todos os produtos";
+            }
+            else
+            {
+                if(string.Equals("ELETRODOMÉSTICO", categoria, StringComparison.OrdinalIgnoreCase))
+                {
+                    produtos = _produtoRepository.Produtos
+                        .Where(l => l.Categoria.CategoriaNome.Equals("ELETRODOMÉSTICO"))
+                        .OrderBy(l => l.Nome);
+                }
+                else
+                {
+                    produtos = _produtoRepository.Produtos
+                       .Where(l => l.Categoria.CategoriaNome.Equals("CASA, MESA E BANHO"))
+                       .OrderBy(l => l.Nome);
+                }
+                categoriaAtual = categoria;
+            }
 
-        var TotalProdutos=produtoListViewModel.Produtos.Count();
+            var produtoListViewModel = new ProdutoListViewModel
+            {
+                Produtos = produtos,
+                CategoriaAtual = categoriaAtual
+            };
 
-        ViewBag.Total="Todos os produtos";
-        ViewBag.TotalProdutos=TotalProdutos;
-
-        return View(produtoListViewModel);
+            return View(produtoListViewModel);
     }
 }
