@@ -26,23 +26,14 @@ public class ProdutoController : Controller
                 produtos = _produtoRepository.Produtos.OrderBy(l => l.ProdutoId);
                 categoriaAtual = "Todos os produtos";
             }
-            else
-            {
-                if(string.Equals("ELETRODOMÉSTICO", categoria, StringComparison.OrdinalIgnoreCase))
-                {
-                    produtos = _produtoRepository.Produtos
-                        .Where(l => l.Categoria.CategoriaNome.Equals("ELETRODOMÉSTICO"))
-                        .OrderBy(l => l.Nome);
-                }
-                else
-                {
-                    produtos = _produtoRepository.Produtos
-                       .Where(l => l.Categoria.CategoriaNome.Equals("CASA, MESA E BANHO"))
-                       .OrderBy(l => l.Nome);
-                }
-                categoriaAtual = categoria;
-            }
+            else{
 
+               produtos=_produtoRepository.Produtos
+               .Where(x=> x.Categoria.CategoriaNome.Equals(categoria)) 
+               .OrderBy(c=>c.Categoria.CategoriaNome);
+            }
+            
+        
             var produtoListViewModel = new ProdutoListViewModel
             {
                 Produtos = produtos,
@@ -51,4 +42,12 @@ public class ProdutoController : Controller
 
             return View(produtoListViewModel);
     }
+
+     public IActionResult Details(int ProdutoId)
+        {
+            var produto = _produtoRepository.Produtos.FirstOrDefault(l => l.ProdutoId ==ProdutoId);
+            return View(produto);
+        }
+
+
 }
