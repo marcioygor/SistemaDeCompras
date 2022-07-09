@@ -49,5 +49,33 @@ public class ProdutoController : Controller
             return View(produto);
         }
 
+        public ViewResult Search(string searchString){
+
+            IEnumerable<Produto> produtos;
+            string categoriaAtual = string.Empty;
+
+            if(string.IsNullOrEmpty(searchString))
+            {
+                produtos = _produtoRepository.Produtos.OrderBy(l => l.ProdutoId);
+                categoriaAtual = "Todos os produtos";
+            }
+            else{
+               produtos=_produtoRepository.Produtos
+               .Where(x=> x.Nome.ToLower().Contains(searchString.ToLower()));
+            }
+            
+            if(produtos.Any())
+               categoriaAtual = "Produtos";        
+            else             
+             categoriaAtual = "Nenhum produto foi encontrado.";
+
+             return View("~/Views/Produto/List.cshtml", new ProdutoListViewModel
+            {
+                Produtos = produtos,
+                CategoriaAtual = categoriaAtual
+            });
+
+        }
+
 
 }
