@@ -33,7 +33,7 @@ namespace SistemaDeCompras
             //fazendo a injenção de dependência onde é solicitado uma instância 
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
-            services.AddTransient<IPedidoRepository, PedidoRepository>();
+            services.AddTransient<IPedidoRepository,PedidoRepository>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

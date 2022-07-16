@@ -12,11 +12,11 @@ namespace SistemaDeCompras.Repositories
     public class PedidoRepository:IPedidoRepository
     {       
         private readonly Context _context;
-        private readonly CarrinhoCompra _carrinhoCompra;
+        //private readonly CarrinhoCompra _carrinhoCompra;
         
-        public PedidoRepository(Context context, CarrinhoCompra carrinhoCompra){
+        public PedidoRepository(Context context){
            _context=context;
-           _carrinhoCompra=carrinhoCompra;
+          // _carrinhoCompra=carrinhoCompra;
         }
 
         public void CriarPedido(Pedido pedido){
@@ -24,19 +24,19 @@ namespace SistemaDeCompras.Repositories
             _context.Pedidos.Add(pedido);
             _context.SaveChanges();
 
-            var CarrinhoCompraItens=_carrinhoCompra.CarrinhoCompraItens;
+          //  var CarrinhoCompraItens=_carrinhoCompra.CarrinhoCompraItens;
 
-            foreach (var carrinhoitem in CarrinhoCompraItens)
-            {
-                var pedidoDetail=new PedidoDetalhe(){
-                    Quantidade=carrinhoitem.Quantidade,
-                    ProdutoId=carrinhoitem.Produto.ProdutoId,
-                    PedidoId=pedido.PedidoId,
-                    Preco=carrinhoitem.Produto.Preco
-                };
+            //foreach (var carrinhoitem in CarrinhoCompraItens)
+           // {
+             //   var pedidoDetail=new PedidoDetalhe(){
+                //    Quantidade=carrinhoitem.Quantidade,
+                //    ProdutoId=carrinhoitem.Produto.ProdutoId,
+                //    PedidoId=pedido.PedidoId,
+                   // Preco=carrinhoitem.Produto.Preco
+               // };
 
-                _context.PedidoDetalhes.Add(pedidoDetail);
-            }
+               // _context.PedidoDetalhes.Add(pedidoDetail);
+           // }
 
              _context.SaveChanges();
         }
