@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using SistemaDeCompras.Repositories;
 using SistemaDeCompras.Repositories.Interfaces;
 using SistemaDeCompras.Models;
+using Microsoft.AspNetCore.Identity; 
 
 namespace SistemaDeCompras
 {
@@ -30,7 +31,12 @@ namespace SistemaDeCompras
             string mySqlConnection = Configuration.GetConnectionString("myConnection");
             services.AddDbContext<Context>(options => options.UseSqlServer(mySqlConnection));
 
-            //fazendo a injenção de dependência onde é solicitado uma instância 
+              //Configurando o Identity
+              services.AddIdentity<IdentityUser, IdentityRole>()
+             .AddEntityFrameworkStores<Context>() //--> Referenciar o arquivo de contexto. 
+             .AddDefaultTokenProviders();
+        
+            //Configurando a injenção de dependência
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<IPedidoRepository,PedidoRepository>();
@@ -63,6 +69,7 @@ namespace SistemaDeCompras
 
             app.UseSession();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

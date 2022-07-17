@@ -103,7 +103,8 @@ public class CarrinhoCompra
         _context.SaveChanges();
     }
 
-    public decimal GetCarrinhoCompraTotal()
+
+     public decimal GetCarrinhoCompraTotal()
     {
         var total = _context.CarrinhoCompraItens.Where(c => c.CarrinhoCompraId == CarrinhoCompraId)
             .Select(c => c.Produto.Preco * c.Quantidade).Sum();

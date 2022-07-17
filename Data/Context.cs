@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using SistemaDeCompras.Models;
+using Microsoft.AspNetCore.Identity; 
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SistemaDeCompras.Data
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<IdentityUser> 
     {
         public Context(DbContextOptions<Context> options):base(options){            
         }
