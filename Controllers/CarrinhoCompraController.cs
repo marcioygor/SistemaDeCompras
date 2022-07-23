@@ -5,6 +5,7 @@ using SistemaDeCompras.Models;
 using SistemaDeCompras.Repositories.Interfaces;
 using SistemaDeCompras.Repositories;
 using SistemaDeCompras.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaDeCompras.Controllers;
 
@@ -30,6 +31,8 @@ public class CarrinhoCompraController : Controller
           return View(CarrinhoCompraVM);
     }
 
+
+       [Authorize]
        public ActionResult AdicionarItemNoCarrinhoCompra(int ProdutoId){
            var produtoSelecionado=_produtoRepository.Produtos.FirstOrDefault(x=>x.ProdutoId==ProdutoId);
 
@@ -40,6 +43,7 @@ public class CarrinhoCompraController : Controller
 
        }
 
+        [Authorize]
         public ActionResult RemoverItemNoCarrinhoCompra(int ProdutoId){
            var produtoSelecionado=_produtoRepository.Produtos.FirstOrDefault(x=>x.ProdutoId==ProdutoId);
 

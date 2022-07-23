@@ -6,6 +6,7 @@ using SistemaDeCompras.Models;
 using SistemaDeCompras.Repositories.Interfaces;
 using SistemaDeCompras.Repositories;
 using SistemaDeCompras.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaDeCompras.Controllers;
 
@@ -21,12 +22,14 @@ public class PedidoController:Controller
             _carrinhoCompra = carrinhoCompra;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Checkout()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Checkout(Pedido pedido)
         {
