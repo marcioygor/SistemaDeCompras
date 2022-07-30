@@ -85,6 +85,8 @@ namespace SistemaDeCompras.Controllers
                 var result=await _userManager.CreateAsync(user,registroVM.Password);
 
                 if(result.Succeeded){
+
+                    await _userManager.AddToRoleAsync(user, "Member");
                     return RedirectToAction("Login", "Account");
                 }
 
@@ -104,6 +106,12 @@ namespace SistemaDeCompras.Controllers
             return RedirectToAction("Index", "Home"); 
         }
 
+        public IActionResult AccessDenied(){
+            return View();
+        }
+
 
     }
+
+       
 }

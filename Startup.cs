@@ -13,6 +13,7 @@ using SistemaDeCompras.Repositories;
 using SistemaDeCompras.Repositories.Interfaces;
 using SistemaDeCompras.Models;
 using Microsoft.AspNetCore.Identity; 
+using SistemaDeCompras.Services;
 
 namespace SistemaDeCompras
 {
@@ -40,6 +41,16 @@ namespace SistemaDeCompras
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<IPedidoRepository,PedidoRepository>();
+            services.AddScoped<ISeedUserRoleInitial,SeedUserRoleInitial>();
+
+            services.AddAuthorization(options=>{
+
+            options.AddPolicy("Admin",
+            
+                 politica=>{
+                      politica.RequireRole("Admin");
+                 });         
+         });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -52,7 +63,7 @@ namespace SistemaDeCompras
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeedUserRoleInitial seedUserRoleInitial )
         {
 
             if (env.IsDevelopment())
@@ -67,6 +78,12 @@ namespace SistemaDeCompras
 
             app.UseRouting();
 
+            //cria os perfis
+            seedUserRoleInitial.SeedRoles();
+
+            //atribui os perfis aos usuários
+            seedUserRoleInitial.SeedUsers();
+
             app.UseSession();
 
             app.UseAuthentication();
@@ -74,7 +91,12 @@ namespace SistemaDeCompras
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
+
+             endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+
+            endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
