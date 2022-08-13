@@ -14,6 +14,7 @@ using SistemaDeCompras.Repositories.Interfaces;
 using SistemaDeCompras.Models;
 using Microsoft.AspNetCore.Identity; 
 using SistemaDeCompras.Services;
+using ReflectionIT.Mvc.Paging;
 
 namespace SistemaDeCompras
 {
@@ -58,6 +59,13 @@ namespace SistemaDeCompras
             services.AddScoped(sp=>CarrinhoCompra.GetCarrinho(sp));
 
             services.AddControllersWithViews();
+
+            // nescessário instalar o pacote ReflectionIT.Mvc.Paging;
+            services.AddPaging(options => {
+                options.ViewName = "Bootstrap4";
+                options.PageParameterName = "pageindex";
+}); 
+
             services.AddMemoryCache();
             services.AddSession();
         }
