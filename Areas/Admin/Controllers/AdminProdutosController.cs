@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ReflectionIT.Mvc.Paging;
 
 namespace SistemaDeCompras.Areas.Admin.Controllers
 {
@@ -19,10 +20,19 @@ namespace SistemaDeCompras.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminProdutos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string filter, int pageindex=1, string sort="Nome")
         {
-            var appDbContext = _context.Produtos.Include(l => l.Categoria);
-            return View(await appDbContext.ToListAsync());
+            var resultado=_context.Produtos.AsQueryable();
+
+            if (!String.IsNullOrWhiteSpace(filter))
+            {
+                resultado=resultado.Where(p=>p.Nome.Contains(filter));
+            }
+            // nescessário instalar o pacote ReflectionIT.Mvc.Paging para usar a páginação.
+            var model = PagingList.Create(resultado, 5, pageindex, sort, "Nome");
+            model.RouteValue=new RouteValueDictionary{{"filter", filter}};
+
+            return View(model);
         }
 
         // GET: Admin/AdminProdutos/Details/5
