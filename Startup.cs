@@ -15,6 +15,7 @@ using SistemaDeCompras.Models;
 using Microsoft.AspNetCore.Identity; 
 using SistemaDeCompras.Services;
 using ReflectionIT.Mvc.Paging;
+using SistemaDeCompras.Areas.Admin.Services;
 
 namespace SistemaDeCompras
 {
@@ -43,6 +44,7 @@ namespace SistemaDeCompras
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<IPedidoRepository,PedidoRepository>();
             services.AddScoped<ISeedUserRoleInitial,SeedUserRoleInitial>();
+            services.AddScoped<RelatorioVendasService>();
 
             services.AddAuthorization(options=>{
 

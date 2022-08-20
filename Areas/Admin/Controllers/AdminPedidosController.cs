@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ReflectionIT.Mvc.Paging;
+using SistemaDeCompras.ViewModels;
 
 namespace SistemaDeCompras.Areas.Admin.Controllers
 {
@@ -17,6 +18,26 @@ namespace SistemaDeCompras.Areas.Admin.Controllers
         public AdminPedidosController(Context context)
         {
             _context = context;
+        }
+
+        public IActionResult PedidoProdutos(int? id){
+
+           var pedido= _context.Pedidos.Include(pd=>pd.PedidoItens)
+           .ThenInclude(p=>p.Pedido)
+           .FirstOrDefault(p=>p.PedidoId==id);
+
+           if(pedido==null){
+              Response.StatusCode=404;
+              return View("PedidoNotFound", id.Value);
+           }
+
+           PedidoProdutoViewModel pedidoProdutos=new PedidoProdutoViewModel(){
+              Pedido=pedido,
+              PedidoDetalhes=pedido.PedidoItens
+           };
+
+           return View(pedidoProdutos);
+
         }
 
         // GET: Admin/AdminPedidos
