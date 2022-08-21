@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kyEJjtTdtSP5T/8qEd296A5gni0nJkaWzS0vW1icXXQ=",
+  "Hash": "5EDdUMH+pgI276raOGbJL8bzlu1e+3PYiafpbblBbes=",
   "Source": "SistemaDeCompras",
   "BasePath": "_content/SistemaDeCompras",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Img\\Envelope-icon24.png"
+    },
+    {
+      "Identity": "C:\\Users\\Marcio Ygor\\Documents\\Aulas_Web\\Asp-Net\\SistemaDeCompras\\wwwroot\\Img\\erro1.png",
+      "SourceId": "SistemaDeCompras",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Marcio Ygor\\Documents\\Aulas_Web\\Asp-Net\\SistemaDeCompras\\wwwroot\\",
+      "BasePath": "_content/SistemaDeCompras",
+      "RelativePath": "Img/erro1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Img\\erro1.png"
     },
     {
       "Identity": "C:\\Users\\Marcio Ygor\\Documents\\Aulas_Web\\Asp-Net\\SistemaDeCompras\\wwwroot\\Img\\faleconosco1.jpg",
@@ -355,6 +372,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Img\\TV.png"
+    },
+    {
+      "Identity": "C:\\Users\\Marcio Ygor\\Documents\\Aulas_Web\\Asp-Net\\SistemaDeCompras\\wwwroot\\Img\\upload2.png",
+      "SourceId": "SistemaDeCompras",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Marcio Ygor\\Documents\\Aulas_Web\\Asp-Net\\SistemaDeCompras\\wwwroot\\",
+      "BasePath": "_content/SistemaDeCompras",
+      "RelativePath": "Img/upload2.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Img\\upload2.png"
+    },
+    {
+      "Identity": "C:\\Users\\Marcio Ygor\\Documents\\Aulas_Web\\Asp-Net\\SistemaDeCompras\\wwwroot\\Img\\visualizar1.jpg",
+      "SourceId": "SistemaDeCompras",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Marcio Ygor\\Documents\\Aulas_Web\\Asp-Net\\SistemaDeCompras\\wwwroot\\",
+      "BasePath": "_content/SistemaDeCompras",
+      "RelativePath": "Img/visualizar1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Img\\visualizar1.jpg"
     },
     {
       "Identity": "C:\\Users\\Marcio Ygor\\Documents\\Aulas_Web\\Asp-Net\\SistemaDeCompras\\wwwroot\\js\\site.js",

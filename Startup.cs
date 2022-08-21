@@ -38,6 +38,9 @@ namespace SistemaDeCompras
               services.AddIdentity<IdentityUser, IdentityRole>()
              .AddEntityFrameworkStores<Context>() //--> Referenciar o arquivo de contexto. 
              .AddDefaultTokenProviders();
+
+             //Configurando o upload de imagens
+            services.Configure<ConfigurationImagens>(Configuration.GetSection("ConfigurationPastaImagens"));
         
             //Configurando a injenção de dependência
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
@@ -61,7 +64,8 @@ namespace SistemaDeCompras
             services.AddScoped(sp=>CarrinhoCompra.GetCarrinho(sp));
 
             services.AddControllersWithViews();
-
+    
+            //configurando paginação
             // nescessário instalar o pacote ReflectionIT.Mvc.Paging;
             services.AddPaging(options => {
                 options.ViewName = "Bootstrap4";
