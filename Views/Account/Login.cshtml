@@ -1,38 +1,42 @@
 @model LoginViewModel
 
-<table class="table">
-    <tr>
-        <td><img src="~/img/login_48.png" alt="Fazer o Login" class="center-block" /></td>
-        <td>
-            <div class="row">
-                <div class="col-10 col-md-10 col-lg-10">
-                    <h4>Login</h4>
-                    <form asp-controller="Account" asp-action="Login" method="post" class="form-horizontal" role="form">
-                        <hr />
-                        <div asp-validation-summary="All" class="text-danger"></div>
-                        <input type="hidden" asp-for="ReturnUrl" />
-                        <div class="form-group">
-                            <label asp-for="UserName" class="col-md-2 control-label"></label>
-                            <div class="col-md-6">
-                                <input asp-for="UserName" class="form-control" />
-                                <span asp-validation-for="UserName" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Password" class="col-md-2 control-label"></label>
-                            <div class="col-md-6">
-                                <input asp-for="Password" class="form-control" />
-                                <span asp-validation-for="Password" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-8">
-                                <input type="submit" class="btn btn-success" value="Log in" />
-                            </div>
-                        </div>
-                    </form>
+<!-- 11 colunas no mobile, e 9 em desktop -->
+<div class="container col-11 col-md-9" id="form-container">
+    <!-- align-items-center para alinhar os itens no centro -->
+    <!-- gx-5 para espaçar a imagem -->
+    <div class="row align-items-center gx-5">
+
+        <!-- Quando for md, vai ocupar 6 colunas e vai ter ordem 2 -->
+        <div class="col-md-6 order-md-2">
+            <h2>Faça o login para continuar</h2>
+            <form asp-controller="Account" asp-action="Login" method="post" class="form-horizontal" role="form">
+
+                <div class="form-floating mb-3">
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+
                 </div>
+
+                <div class="form-floating mb-3">
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <input type="submit" class="btn btn-primary" value="Entrar">
+
+            </form>
+
+        </div>
+
+        <div class="col-md-6 order-md-1">
+            <div class="col-12">
+                <img src="~/img/sign_in.svg" alt="Entrar no Sistema" class="img-fluid">
             </div>
-        </td>
-    </tr>
-</table>
+
+            <div class="col-12" id="link-container">
+                <a href="register.html">Ainda não tem cadastro?</a>
+            </div>
+        </div>
+    </div>
+
+</div>

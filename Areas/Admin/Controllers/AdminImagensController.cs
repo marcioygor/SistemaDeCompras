@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Security.AccessControl;
 using System;
 using SistemaDeCompras.Models;
@@ -83,6 +84,43 @@ namespace SistemaDeCompras.Areas.Admin.Controllers
 
             return View(ViewData);
         }
+
+        public async Task<IActionResult> GetImagens(){
+           FileManagerModel model = new FileManagerModel();
+
+            //Capturando caminho do servidor.
+            var userImagesPath = Path.Combine(_hostEnvironment.WebRootPath,
+                 _myConfig.NomePastaImagensProdutos);
+
+            //Capturando arquivos.
+            DirectoryInfo dir = new DirectoryInfo(userImagesPath);
+            FileInfo[] files = dir.GetFiles();
+            model.PathImagensProduto = _myConfig.NomePastaImagensProdutos;
+
+            if (files.Length == 0)
+            {
+                ViewData["Erro"] = $"Nenhum arquivo encontrado na pasta {userImagesPath}";
+            }
+
+            model.Files = files;
+            return View(model);
+        }
+
+        public async Task<IActionResult> DeleteFile(string fname){
+
+            string _imagemDeleta=Path.Combine(_hostEnvironment.WebRootPath,
+                 _myConfig.NomePastaImagensProdutos + "\\", fname);
+
+             if(System.IO.File.Exists(_imagemDeleta)){
+                System.IO.File.Delete(_imagemDeleta);
+                 ViewData["Deletado"] = $"Arquivo(s) {_imagemDeleta} deletado com sucesso";
+             }
+
+
+             return View("index");
+        }
+
+
        
     }
 }
